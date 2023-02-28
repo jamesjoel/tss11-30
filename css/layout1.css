@@ -1,0 +1,18 @@
+body{
+    background-color: #457845;
+}
+#box1{
+    background-color: #F39C12;
+    height: 100px;
+    width: 100%;
+}
+#box2{
+    background-color: aquamarine;
+    height: 700px;
+    width: 100%;
+}
+#box3{
+    background-color: #633974;
+    height: 200px;
+    width: 100%;
+}
