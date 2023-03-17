@@ -1,0 +1,14 @@
+body{
+    background-color: #5D6D7E;
+}
+.left-menu li{
+    border-bottom:1px solid #D5D8DC  !important;
+}
+.left-menu li a:hover{
+    background-color: #1C2833;
+    color: #fff !important;
+}
+.slider{
+    height: 300px;
+    background-color: #F1948A;
+}

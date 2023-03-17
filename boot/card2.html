@@ -1,21 +1,51 @@
 <html>
     <head>
         <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
+        <link type="text/css" rel="stylesheet" href="css/card2.css" />
+
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
     </head>
     <body>
+        <div class="container-fluid slider"></div>
+
+
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-3">
                     <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="bg-dark text-light p-3 mb-0 mt-4">Categories</h5>
+                            <ul class="nav flex-column bg-light left-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Mobiles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Home Appliance</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Electronics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Books</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Other</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="col-md-12 col-sm-6 col-6">
                             <div class="card border border-dark mt-4">
                             <div class="card-header bg-dark">
                                 <h5 class="text-light">New Arrival</h5>
                             </div>
                             <div class="card-body">
-                                Lorem ipsum dolor sit amet consectetur elit. Earum omnis id quos ...<button class="btn btn-sm btn-primary">More</button>
+                                Lorem ipsum dolor sit amet consectetur elit. Earum omnis id quos ...<button data-toggle="modal" data-target="#box1" class="btn btn-sm btn-primary">More</button>
                             </div>
                             </div>
                         </div>
@@ -103,6 +133,24 @@
                         </div>
                         
                         
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="box1" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>New Arrival</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis tempore nam incidunt officiis, voluptates minima, explicabo doloribus molestias dicta dolore ea velit magni omnis accusantium inventore quas ratione quia? Illum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum exercitationem sapiente perferendis! Pariatur deserunt autem, iusto, temporibus at voluptatum, provident voluptatem cupiditate ipsum sunt voluptatibus repellat dolores rerum amet quod!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
