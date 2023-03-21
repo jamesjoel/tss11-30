@@ -1,0 +1,17 @@
+.bg-black{
+    background-color: #111111;
+}
+.logo{
+    font-size: 25px;
+    font-weight: bold;
+}
+.logo span{
+    color: #E63234;
+}
+#menu ul li a{
+    font-size: 20px;
+    color : #000;
+}
+#menu ul li a:hover{
+    border-bottom: 2px solid #E63234;
+}
