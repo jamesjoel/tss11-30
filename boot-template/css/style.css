@@ -15,3 +15,29 @@
 #menu ul li a:hover{
     border-bottom: 2px solid #E63234;
 }
+.slider{
+    background-color: #F2DFDB;
+    height: 400px;
+}
+.show-now{
+    font-size: 18px;
+    margin-top: 10px;
+    display: inline-block;
+    color:  #000;
+    border-bottom: 2px solid #000;
+}
+.show-now:hover{
+    color: #000;
+    text-decoration: none;
+    border-bottom: 2px solid #E63234;
+}
+.middle-menu li a{
+    font-size: 22px;
+    color: #B7B7B7;
+    font-weight: bold;
+}
+.middle-menu li a:hover{
+    
+    color: #111111;
+    
+}
