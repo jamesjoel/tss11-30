@@ -1,0 +1,23 @@
+body{
+    /* background-color: #45124A; hexz-decimale color code */
+    background-color: rgb(11, 229, 37);
+}
+h1{
+    color : red;
+}
+p{
+    color : green;
+    font-size: 30px;
+}
+table{
+    background-color: blue;
+    color : white;
+}
+input{
+    background-color: blueviolet;
+}
+div{
+    height: 300px;
+    width: 500px;
+    background-color: gray;
+}

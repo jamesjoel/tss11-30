@@ -1,0 +1,22 @@
+body{
+    background-color: #CD4120;
+}
+.para{
+    background-color: #FFF;
+    width: 200px;
+    font-size: 20px;
+}
+.para:hover{
+    background-color: blue;
+}
+a{
+    background-color: blue;
+    color: #fff;
+    font-size: 20px;
+}
+a:visited{
+    background-color: red;
+}
+a:active{
+    background-color: green;
+}
