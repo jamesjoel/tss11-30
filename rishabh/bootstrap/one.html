@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/bootstrap.bundle.js"></script>
+</head>
+<body class="container-fluid" style="background-color: paleturquoise;">
+    <header>
+        <!-- Issue - both divs have different margins of their child components, 1st one is alert & 2 one is just button -->
+        <div class="container fluid">
+            <h1 class="display-3 text-center fw-semibold my-3">The Web Page</h1>
+        </div>
+                <!-- Below code in header is not working as intentioned 
+        Alert - Not showing cross "X" to close
+        Dropdown - Clicking on button does not open dropdown menu
+        -->
+        <div class="row">
+            <div class="col-6">
+                <div class="alert alert-dismissible">
+                    <!-- "btn-block class not working in button below" -->
+                    <button type="button" class="btn btn-lg btn-primary close btn-block" data-dismiss="alert" aria-label="close">Total Visitors this year <span class="badge badge-capsule bg-warning">999</span></button>
+                </div>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-lg btn-block btn-primary">Total Visitors this year <span class="badge badge-capsule bg-warning">999</span></button>
+            </div>
+        </div>
+        <div class="dropdown"> 
+            <button class="dropdown-toggle" data-toggle="dropdown">Menu</button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Home</a>
+                <a href="#" class="dropdown-item">Home</a>
+            </div>
+        </div>
+    </header>
+    <main class="container my-5 p-2" style="background-color: peru;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="">
+            <div class="col-2">
+                <!-- "table-stripped" not working in table -->
+                <table class=" table table-dark table-stripped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>One</th>
+                            <th>Two</th>
+                            <th>Three</th>
+                        </tr>
+                        <tr>
+                            <td>1fdfggdg</td>
+                            <td>dgdgdgg</td>
+                            <td>dgdgdgdg</td>
+                        </tr>
+                        <tr>
+                            <td>gdggdg</td>
+                            <td>gdgdgdg</td>
+                            <td>dgdgdg</td>
+                        </tr>
+                        <tr>
+                            <td>dgdgg</td>
+                            <td>ssgsggsg</td>
+                            <td>sgsgsgsg</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-2"></div>
+
+                </div>
+                <!-- This progress bar does not work as intended, i do not remember proper classes for it -->
+                <div class=" progress bar bg-primary text-light" style="width:70%">
+                    This is a failed implementation of progress bar
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                this is header
+                            </div>
+                            <div class="card-body">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente quas aspernatur fuga, laudantium laborum deserunt cum? Laborum earum saepe nobis corrupti. Iure, illum modi sequi libero a laudantium voluptas atque.    
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-dark btn-lg">This is button</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                this is header
+                            </div>
+                            <div class="card-body">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente quas aspernatur fuga, laudantium laborum deserunt cum? Laborum earum saepe nobis corrupti. Iure, illum modi sequi libero a laudantium voluptas atque.    
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-dark btn-lg">This is button</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="row">
+            <div class="col-6">
+                <div class="list-group">
+                    <a href="#" class="list-item list-group-item action">
+                        YOYOYO
+                    </a>
+                    <a href="#" class="list-item list-group-item action">
+                        YOYOYO
+                    </a>
+                    <a href="#" class="list-item list-group-item action active">
+                        YOYOYO
+                    </a>
+                    <a href="#" class="list-item list-group-item action">
+                        YOYOYO
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-6">
+            <ul class="pagination bg-">
+                <li class="page-item">
+                    <a href="#" class="page-link">0</a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link">4</a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link">5</a>
+                </li>
+            </ul>
+            </div>
+    </div>
+    </footer>
+</body>
+</html>
