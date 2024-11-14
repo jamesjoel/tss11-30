@@ -27,6 +27,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     flex-wrap:wrap;
+    align-items:start;
 }
 
 .b{
@@ -47,10 +48,10 @@ body{
     height: 50px;
     width: 150px
     display: flex;
-    flex-direction:row;
-    flex-wrap:nowrap;
+    flex-direction:column;
+    flex-wrap:wrap;
     flex-grow: 8;
-    justify-content:flex-start;
+    justify-content:end;
     align-content:center;
     align-items:center;
     margin: 5px 5px 5px 0;
