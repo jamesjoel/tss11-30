@@ -1,0 +1,13 @@
+.bg-purple{
+    background-color: #5500AA;
+}
+.text-purple{
+    color: #5500AA;
+}
+.text-green{
+    color : #77e20b
+}
+#menu .nav .nav-item .nav-link:hover{
+    background-color: #77e20b;
+    color : #333;
+}
