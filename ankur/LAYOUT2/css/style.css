@@ -11,3 +11,51 @@
     background-color: #77e20b;
     color : #333;
 }
+.slider{
+    min-height: 350px;
+    background-image: url("../images/slider-bg.jpg");
+    background-size: 100% 100%;
+}
+.hero-box:hover{
+    background-color: #77e20b;
+    cursor:pointer;
+}
+.btn-green{
+    background-color: #77e20b;
+    color: #fff;
+}
+.btn-purple{
+    background-color: #5500AA;
+    color:#fff;
+}
+.btn-green:hover{
+    background-color:#5500AA;
+    }
+.btn-purple:hover{
+        background-color:#77e20b;
+        }
+    
+.new-arrival-left-section{
+    background-image: url(../images/new-arrival.png);
+    height: 400px;
+    background-size: 100% 100%;
+}
+.bar{
+    width: 150px;
+    height: 7px;
+    margin:0 auto;
+    background-color: #77e20b;
+}
+.bar1{
+    width: 100px;
+    height: 2px;
+    margin: 0 0 0 5px;
+    background-color: #77e20b;
+}
+.product{
+    transition: 1s;
+}
+.product:hover{
+    box-shadow: 0 0 8px #000;
+    cursor: pointer;
+}
