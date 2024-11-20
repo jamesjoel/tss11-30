@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+            h1{
+                color : blue !important;
+            }
+            .text-danger{
+                color : red;
+                font-size: 40px;
+            }
+           .container{
+            min-height: 200px;
+            width: 100%;
+            background-color: red;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+           }
+           .box{
+            background-color: green;
+            height: 150px;
+            width: 150px;
+           }
+
+        @media screen and (min-width : 600px){
+            .container{
+                flex-direction: row;
+            }
+        }
+        @media screen and (min-width : 800px){
+            .container{
+                flex-direction: row;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 class="text-danger">The Stepping Stone</h1>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
