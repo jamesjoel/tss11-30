@@ -1,0 +1,20 @@
+.nav-item {
+  border: 5px solid transparent !important;
+}
+.nav-item:hover,
+.active {
+  background-color: #17a3d8 !important;
+  border-bottom: 5px solid #147eb8 !important;
+}
+.btn-orange {
+  padding: 1px 15px 2px 15px;
+  background-color: #f38959;
+  border-radius: 5px;
+}
+.btn-orange:hover {
+  background-color: #f38a59ce;
+}
+.mt-ni{
+    margin-top: -1.6rem;
+    background-color: #17a3d8;
+}
