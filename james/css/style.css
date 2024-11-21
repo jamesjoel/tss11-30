@@ -1,0 +1,39 @@
+.bg-orange{
+    background-color: #EF855D;
+}
+.bg-blue{
+    background-color: #17A3D8;
+}
+.bg-dark-gray{
+    background-color: #2E3E4E;
+}
+.text-orange{
+    color: #EF855D;
+}
+.text-blue{
+    color: #17A3D8;
+}
+.text-dark-gray{
+    color: #2E3E4E;
+}
+.btn-outline-orange{
+    border-color: #EF855D;
+}
+.btn-orange{
+    background-color: #EF855D;
+    color: #fff;
+}
+.btn-orange:hover{
+    background-color: #2E3E4E;
+    color:#fff;
+}
+.btn-blue{
+    background-color: #17A3D8;
+}
+#menu ul li a:hover{
+    background-color: #17A3D8;
+    color : #fff;
+}
+.hero{
+    height: 400px;
+}
