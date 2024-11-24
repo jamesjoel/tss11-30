@@ -1,0 +1,17 @@
+
+#menu .nav .nav-item .nav-link{
+    font-weight: bold;
+}
+#menu .nav .nav-item .nav-link:hover{
+    color:#17a3d8;
+}
+.slider{
+    height:250px;
+    font-weight: bold;
+}
+.bg-red{
+    background-color: #f58560;
+}
+.hero-box{
+    height: 50px;
+}
