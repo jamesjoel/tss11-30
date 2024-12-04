@@ -5,7 +5,12 @@ async function convertHTMLToPDF(htmlContent, outputPath) {
   const page = await browser.newPage();
 
   await page.setContent(htmlContent);
-  await page.pdf({ path: outputPath, format: "A4" });
+  await page.pdf({
+    path: outputPath,
+    format: "A4",
+    printBackground: true, // Ensures backgrounds are rendered
+  });
+  // await page.emulateMediaType("print"); // Or 'print'
 
   await browser.close();
   console.log(`PDF created at ${outputPath}`);
@@ -19,12 +24,14 @@ const htmlContent = `<!DOCTYPE html>
     <title>Document</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+      /* @media print { */
       body {
         display: flex;
         justify-self: center;
         justify-items: center;
+        align-items: center;
         flex-direction: column;
-        width: 70%;
+        width: 90%;
         font-family: "Inter";
       }
       .col-2 {
@@ -63,6 +70,7 @@ const htmlContent = `<!DOCTYPE html>
         border-collapse: collapse;
         text-align: left;
         font-size: 16px;
+        margin-top: 20px;
         border: 2px solid black;
       }
       .invoice-item th {
@@ -84,18 +92,18 @@ const htmlContent = `<!DOCTYPE html>
       .invoice-item tr:nth-child(odd):not(:first-child) {
         background-color: rgb(255, 255, 255);
       }
-      .calculated-price{
+      .calculated-price {
         width: 300px;
       }
-      .calculated-price td{
+      .calculated-price td {
         padding: 0;
       }
-      .calculated-price .cal-heading{
-
+      .calculated-price .cal-heading {
       }
-      .calculated-price .cal-data{
+      .calculated-price .cal-data {
         text-align: right;
       }
+      /* } */
     </style>
   </head>
   <body>
@@ -130,14 +138,18 @@ const htmlContent = `<!DOCTYPE html>
         </tr>
       </table>
     </div>
-    <div class="heading-color">BILL TO</div>
-    <p>
-      [Name] <br />
-      [Company Name] <br />
-      [Street Address] <br />
-      [City, ST ZIP] <br />
-      [Phone]
-    </p>
+    <div class="col-2">
+      <div>
+        <div class="heading-color">BILL TO</div>
+<p class="padding-left-20">
+          [Name] <br />
+          [Company Name] <br />
+          [Street Address] <br />
+          [City, ST ZIP] <br />
+          [Phone]
+        </p>
+      </div>
+    </div>
     <table class="invoice-item">
       <tr>
         <th>DESCRIPTION</th>
@@ -184,34 +196,40 @@ const htmlContent = `<!DOCTYPE html>
       </p>
       <table class="calculated-price">
         <tr>
-            <td>Subtotal</td>
-            <td class="cal-data">600.00</td>
+          <td>Subtotal</td>
+          <td class="cal-data">600.00</td>
         </tr>
         <tr>
-            <td>Taxable</td>
-            <td class="cal-data">75.00</td>
+          <td>Taxable</td>
+          <td class="cal-data">75.00</td>
         </tr>
         <tr>
-            <td>Tax Rate</td>
-            <td class="cal-data">6.25%</td>
+          <td>Tax Rate</td>
+          <td class="cal-data">6.25%</td>
         </tr>
         <tr>
-            <td>Tax Due</td>
-            <td class="cal-data">4.69</td>
+          <td>Tax Due</td>
+          <td class="cal-data">4.69</td>
         </tr>
         <tr>
-            <td>Other</td>
-            <td class="cal-data">-</td>
+          <td>Other</td>
+          <td class="cal-data">-</td>
         </tr>
         <tr>
-            <td>Total</td>
-            <td class="cal-data">$    604.69</td>
+          <td>Total</td>
+          <td class="cal-data">$ 604.69</td>
         </tr>
       </table>
     </div>
-    <p style="width: 500px; text-align: center;">If you have any questions about this invoice, Please Contact <b>[Name, Phone, E-mail]</b><br><b><i>Thank you for your business!</i></b></p>
+    <p style="width: 500px; text-align: center">
+      If you have any questions about this invoice, Please Contact
+      <b>[Name, Phone, E-mail]</b><br /><b
+        ><i>Thank you for your business!</i></b
+      >
+    </p>
   </body>
 </html>
+
 `;
 
 convertHTMLToPDF(htmlContent, "output.pdf");
