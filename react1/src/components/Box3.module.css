@@ -1,0 +1,9 @@
+.text-red{
+    color : red;
+    font-size: 25px;
+    background-color: blue;
+    border : 10px solid red;
+}
+.h1{
+    background-color: pink;
+}

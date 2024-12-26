@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "crypto-random-string": "^5.0.0",
+    "jpeg-js": "^0.4.4",
+    "js-image-generator": "^1.0.4",
+    "pdfkit": "^0.15.1",
+    "string-random": "^0.1.3"
+  }
+}
