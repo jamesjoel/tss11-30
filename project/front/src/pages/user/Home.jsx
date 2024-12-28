@@ -1,7 +1,36 @@
 import React from 'react'
-import Header from '../../components/user/Header'
+import Header from '../../components/user/headers/Header'
 import HeroSection from '../../components/user/HeroSection'
 const Home = () => {
+
+    let data = [
+        {
+            name : "I-Phone",
+            price : 12500,
+            image :"assets/images/food1.jpg",
+            detail : "g sdfg g sdvberg sdfvb serg sdfvb seghrt"
+        },
+        {
+            name : "Mi",
+            price : 10000,
+            image :"assets/images/food2.jpg",
+            detail : "g sdfg g sdvberg sdfvb serg sdfvb seghrt"
+        },
+        {
+            name : "Fridge",
+            price : 25000,
+            image :"assets/images/food3.jpg",
+            detail : "g sdfg g sdvberg sdfvb serg sdfvb seghrt"
+        },
+        {
+            name : "Demo",
+            price : 20000,
+            image :"assets/images/food4.jpg",
+            detail : "g sdfg g sdvberg sdfvb serg sdfvb seghrt"
+        },
+    ]
+
+
   return (
     <>
     <Header />
@@ -17,23 +46,28 @@ const Home = () => {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-4 col-sm-6">
+
+                {
+                    data.map((item)=><div className="col-md-4 col-sm-6">
                     <div className="single-food">
                         <div className="food-img">
-                            <img src="assets/images/food1.jpg" className="img-fluid" alt="" />
+                            <img src={item.image} className="img-fluid" alt="" />
                         </div>
                         <div className="food-content">
                             <div className="d-flex justify-content-between">
-                                <h5>Mexican Eggrolls</h5>
-                                <span className="style-change">$14.50</span>
+                                <h5>{item.name}</h5>
+                                <span className="style-change">${item.price}</span>
                             </div>
-                            <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
+                            <p className="pt-3">{item.detail}</p>
                         </div>
                     </div>
-                </div>
+                </div>)
+                }
 
                 
-                <div className="col-md-4 col-sm-6">
+
+                
+                {/* <div className="col-md-4 col-sm-6">
                     <div className="single-food mt-5 mt-sm-0">
                         <div className="food-img">
                             <img src="assets/images/food2.jpg" className="img-fluid" alt="" />
@@ -102,7 +136,7 @@ const Home = () => {
                             <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     </section>
