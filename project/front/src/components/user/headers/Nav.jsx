@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 const Nav = () => {
   return (
+     <div className="main-menu">
     <ul>
                         <li><NavLink to="/">home</NavLink></li>
                         <li><NavLink to="/about">about</NavLink></li>
@@ -18,6 +19,7 @@ const Nav = () => {
                         <li><a href="contact-us.html">contact</a></li>
                         <li><a href="elements.html">Elements</a></li> */}
                     </ul>
+  </div>
   )
 }
 

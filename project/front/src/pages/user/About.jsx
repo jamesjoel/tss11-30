@@ -46,30 +46,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <table className="table table-dark">
-                        <thead>
-                            <tr>
-                                <th>S.No.</th>
-                                <th>Name</th>
-                                <th>Age</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                data.map((item, index)=><tr>
-                                                        <td>{index+1}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.age}</td>
-                                                    </tr>
-                                    
-                                )
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            
         </div>
     </section>
     </>
