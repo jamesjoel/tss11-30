@@ -1,7 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../../components/user/headers/Header'
 import HeroSection from '../../components/user/HeroSection'
+import axios from 'axios';
+import {API_URL} from '../../constants/API_URL'
+
 const Home = () => {
+
+    let [allBus, setAllBus] = useState([]);
+    useEffect(()=>{
+        axios
+        .get(`${API_URL}/business`)
+        .then(response=>{
+            setAllBus(response.data);
+        })
+    },[])
+
 
     
 
@@ -24,78 +37,30 @@ const Home = () => {
                
 
                 
-
+                {
+                    allBus.map(item=>{
+                        return(
+                            <div className="col-md-4 col-sm-6">
+                                <div className="single-food mt-5 mt-sm-0">
+                                    <div className="food-img">
+                                        <img src="assets/images/food2.jpg" className="img-fluid" alt="" />
+                                    </div>
+                                    <div className="food-content">
+                                        <div className="d-flex justify-content-between">
+                                            <h5>{item.business_name}</h5>
+                                            <span className="style-change badge bg-danger text-light">{item.rating}</span>
+                                        </div>
+                                        <p className="pt-3">{item.address}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
                 
-                <div className="col-md-4 col-sm-6">
-                    <div className="single-food mt-5 mt-sm-0">
-                        <div className="food-img">
-                            <img src="assets/images/food2.jpg" className="img-fluid" alt="" />
-                        </div>
-                        <div className="food-content">
-                            <div className="d-flex justify-content-between">
-                                <h5>chicken burger</h5>
-                                <span className="style-change">$9.50</span>
-                            </div>
-                            <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4 col-sm-6">
-                    <div className="single-food mt-5 mt-md-0">
-                        <div className="food-img">
-                            <img src="assets/images/food3.jpg" className="img-fluid" alt="" />
-                        </div>
-                        <div className="food-content">
-                            <div className="d-flex justify-content-between">
-                                <h5>topu lasange</h5>
-                                <span className="style-change">$12.50</span>
-                            </div>
-                            <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4 col-sm-6">
-                    <div className="single-food mt-5">
-                        <div className="food-img">
-                            <img src="assets/images/food4.jpg" className="img-fluid" alt="" />
-                        </div>
-                        <div className="food-content">
-                            <div className="d-flex justify-content-between">
-                                <h5>pepper potatoas</h5>
-                                <span className="style-change">$14.50</span>
-                            </div>
-                            <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4 col-sm-6">
-                    <div className="single-food mt-5">
-                        <div className="food-img">
-                            <img src="assets/images/food5.jpg" className="img-fluid" alt="" />
-                        </div>
-                        <div className="food-content">
-                            <div className="d-flex justify-content-between">
-                                <h5>bean salad</h5>
-                                <span className="style-change">$8.50</span>
-                            </div>
-                            <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4 col-sm-6">
-                    <div className="single-food mt-5">
-                        <div className="food-img">
-                            <img src="assets/images/food6.jpg" className="img-fluid" alt="" />
-                        </div>
-                        <div className="food-content">
-                            <div className="d-flex justify-content-between">
-                                <h5>beatball hoagie</h5>
-                                <span className="style-change">$11.50</span>
-                            </div>
-                            <p className="pt-3">Face together given moveth divided form Of Seasons that fruitful.</p>
-                        </div>
-                    </div>
-                </div>
+                
+                
+                
             </div>
         </div>
     </section>
@@ -104,3 +69,17 @@ const Home = () => {
 }
 
 export default Home
+
+
+/*
+
+let a = "rohit"+b+"hello"+c+"indore"
+let a = 'rohit'+b
+
+
+let a = `rohit ${b} hello ${c}`
+
+
+
+
+*/
