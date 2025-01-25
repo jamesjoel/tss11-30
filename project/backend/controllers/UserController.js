@@ -7,4 +7,10 @@ routes.get("/", async(req, res)=>{
     res.send(result);
 })
 
+routes.post("/", async(req, res)=>{
+    delete req.body.repassword;
+    await User.create(req.body);
+    res.send({success:true});
+})
+
 module.exports = routes;
