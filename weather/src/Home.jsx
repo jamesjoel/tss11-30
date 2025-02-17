@@ -1,52 +1,89 @@
-import React, { useState  , useEffect} from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Home = () => {
-  let [allcity , setAllcity] = useState([])
-  let [allstate , setAllstate] = useState([])
+  const [allState, setAllState] = useState([]);
+  const [allCity, setAllCity] = useState([]);
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [weather, setWeather] = useState({});
 
-
-  useEffect(()=>{
+  useEffect(() => {
     axios
-   .get("")
-   .then(response=>{
-     // console.log(response.data);
-     setAllstate(response.data);
-   })
-}, [])
+      .get("https://tss11-30-project.onrender.com/api/v1/city/state")
+      .then(response => {
+        setAllState(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleStateChange = (e) => {
+    const selectedState = e.target.value;
+    setSelectedState(selectedState);
+
+    axios
+      .get(`https://tss11-30-project.onrender.com/api/v1/city/getcity/${selectedState}`)
+      .then(response => {
+        setAllCity(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  const handleCityChange = (e) => {
+    const selectedCity = e.target.value;
+    setSelectedCity(selectedCity);
+
+    axios
+      .get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${selectedCity}&aqi=no`)
+      .then(response => {
+        setWeather(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   return (
-    <>
-        <div className='gradient_background container-fluid'>
-            <div className='row'>
-              <div className='col-md-4 offset-md-4 my-5'>
-                <div className='card my-5'>
-                  <div className='card-header'></div>
-                  <div className='card-body'>
-                    <label>State</label>
-                    <select className='form-control'>
-                      <option></option>
-                      {
-                         allstate.map(item=><option>{item}</option>)
-                      }
-                    </select>
-                    <label>city</label>
-                    <select className='form-control'>
-                      <option></option>
-                      { 
-                                    
-                         allcity.map((item, index)=>(<option>{item.name}</option>))
-                               
-                      }
-                    </select>
-                  </div>
-                  <div className='card-footer'></div>
-                </div>
-              </div>
-            </div>
-        </div>
-    </>
-  )
-}
+    <div className='gradient_background container-fluid'>
+      <div className='row'>
+        <div className='col-md-4 offset-md-4 my-5'>
+          <div className="form-group">
+            <label>State</label>
+            <select className='form-control' value={selectedState} onChange={handleStateChange}>
+              <option></option>
+              {allState.map(item => (
+                <option key={item}>{item}</option>
+              ))}
+            </select>
+          </div>
 
-export default Home
+          {allCity.length > 0 && (
+            <div className="form-group">
+              <label>City</label>
+              <select className='form-control' value={selectedCity} onChange={handleCityChange}>
+                <option></option>
+                {allCity.map((item, index) => (
+                  <option key={index}>{item.name}</option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {weather.current && (
+            <div>
+              <h2>Weather in {selectedCity}</h2>
+              <p>Temperature: {weather.current.temp_c}°C</p>
+              <p>Condition: {weather.current.condition.text}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
