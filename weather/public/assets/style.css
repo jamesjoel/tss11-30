@@ -3,3 +3,24 @@
     height: 100vh;
     /* width: 1200cqmax; */
   }
+
+
+.gradient_background_div {
+    background: linear-gradient(0deg, rgba(40, 2, 192, 0.763), hsl(300, 2%, 11%));
+    height: 600px;
+    box-shadow: 9px 10px 2px rgba(42, 41, 41, 0.126);
+    /* opacity: 0.5; */
+
+    /* width: 1200cqmax; */
+  }
+
+
+  .hero-image {
+    background-image: url(./images/cloudy.avif);
+    /* background-color: #10106e; */
+    height: 600px;
+    width: 80%;
+    background-repeat: no-repeat;
+    /* opacity: 0.5; */
+
+  }

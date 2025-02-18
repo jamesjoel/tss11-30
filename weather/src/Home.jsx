@@ -50,7 +50,10 @@ const Home = () => {
   return (
     <div className='gradient_background container-fluid'>
       <div className='row'>
-        <div className='col-md-4 offset-md-4 my-5'>
+        <div className='col-md-4 offset-md-4 '>
+           <div className='gradient_background_div p-5 m-5'>
+            
+
           <div className="form-group">
             <label>State</label>
             <select className='form-control' value={selectedState} onChange={handleStateChange}>
@@ -75,12 +78,15 @@ const Home = () => {
 
           {weather.current && (
             <div>
-              <h2>Weather in {selectedCity}</h2>
+              <h2 className='text-white'>Weather in {selectedCity}</h2>
               <p>Temperature: {weather.current.temp_c}°C</p>
               <p>Condition: {weather.current.condition.text}</p>
+              {/* <p>Condition:  {weather.current.condition.icon}</p> */}
+              <img src={weather.current.condition.icon} style={{height: '100px' , width: '100px'}}/>
             </div>
           )}
         </div>
+       </div>
       </div>
     </div>
   );
