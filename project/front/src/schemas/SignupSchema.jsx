@@ -9,7 +9,8 @@ let SignupFrmSchema = YUP.object({
     gender : YUP.string().required("Select Your Gender"),
     address : YUP.string().required("Insert Your Address"),
     state : YUP.string().required("Select Your State"),
-    city : YUP.string().required("Select Your City")
+    city : YUP.string().required("Select Your City"),
+    
 });
 
 export default SignupFrmSchema;``

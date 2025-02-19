@@ -1,8 +1,33 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import Nav from './Nav'
+import TopSection from '../../TopSection'
 
 const Header2 = () => {
+    let location = useLocation()
+    let [pathName, setPathName] = useState("");
+    useEffect(()=>{
+        if(location.pathname=="/about"){
+            setPathName("About");
+        }
+        if(location.pathname=="/login"){
+            setPathName("User Login");
+        }
+        if(location.pathname=="/signup"){
+            setPathName("User Registration");
+        }
+        if(location.pathname=="/business/signup"){
+            setPathName("Business Registration");
+        }
+        if(location.pathname=="/business/login"){
+            setPathName("Login Registration");
+        }
+        if(location.pathname=="/booktable"){
+            setPathName("Table Booking");
+        }
+    },[])
+
+    
   return (
     <>
     <header className="header-area header-area2">
@@ -26,17 +51,8 @@ const Header2 = () => {
             </div>
         </div>
     </header>
+    <TopSection name={pathName} />
     
-    <section className="banner-area banner-area2 text-center">
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-12">
-                    <h1><i>Welcome</i></h1>
-                    <p className="pt-2"><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
-                </div>
-            </div>
-        </div>
-    </section>
     </>
   )
 }

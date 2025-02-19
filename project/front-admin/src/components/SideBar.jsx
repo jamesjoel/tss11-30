@@ -8,14 +8,14 @@ const SideBar = () => {
         <div className="sidebar-logo">
       
           <div className="logo-header" data-background-color="dark">
-            <a href="index.html" className="logo">
+            <NavLink to="/dashboard" className="logo">
               <img
                 src="/assets/img/kaiadmin/logo_light.svg"
                 alt="navbar brand"
                 className="navbar-brand"
                 height="20"
               />
-            </a>
+            </NavLink>
             <div className="nav-toggle">
               <button className="btn btn-toggle toggle-sidebar">
                 <i className="gg-menu-right"></i>
@@ -33,10 +33,10 @@ const SideBar = () => {
         <div className="sidebar-wrapper scrollbar scrollbar-inner">
           <div className="sidebar-content">
             <ul className="nav nav-secondary">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <NavLink
                   
-                  to="/"
+                  to="/dashboard"
                   className=""
                   
                 >
@@ -90,7 +90,13 @@ const SideBar = () => {
                   </ul>
                 </div>
               </li>
-              
+              <li className="nav-item">
+                <NavLink to="/logout" className="">
+                  <i className="fas fa-home"></i>
+                  <p>Logout</p>
+                </NavLink>
+                
+              </li>
             </ul>
           </div>
         </div>

@@ -9,6 +9,11 @@ app.use(express.urlencoded({extended:true}));
 app.use(require("./allRouter/AllRoutes"));
 
 const port = process.env.PORT || 3000;
-app.listen(port, ()=>{
+
+
+let start = async()=>{
+    await app.listen(port);
     console.log("server running with port ", port);
-})
+}
+
+start();
