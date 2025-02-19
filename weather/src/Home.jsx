@@ -8,6 +8,22 @@ const Home = () => {
   const [selectedState, setSelectedState] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [weather, setWeather] = useState({});
+  const [backgroundImage,setBackgroundImage] 
+
+  // const [image,setImage] = useState("");
+
+  // let weatherCondition=(obj)=>{
+    
+    // console.log(obj);return;
+//     if(obj==Clear){
+//         document.body.style.backgroundImage = "url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cac950bd-8f59-4376-8597-52366358d12e/d9wvf1t-b8eec3f5-b88b-4b1f-8aac-36bc21e06a92.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvY2FjOTUwYmQtOGY1OS00Mzc2LTg1OTctNTIzNjYzNThkMTJlXC9kOXd2ZjF0LWI4ZWVjM2Y1LWI4OGItNGIxZi04YWFjLTM2YmMyMWUwNmE5Mi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.WYDWFRtXw1BslrbVksftWlGdI6xCc0wHMhKMMx-NEuM')";
+
+//     }
+//   else{
+//       document.body.style.backgroundImage= "url(../assets/images/rainy.jpg)";
+
+//   }
+// }
 
   
   useEffect(() => {
@@ -51,9 +67,12 @@ const Home = () => {
 
   return (
     <>
-    <div className='gradient_background container-fluid'>
+    
+    
+    <div className='container-fluid' style={{ backgroundImage: 'linear-gradient(120deg, hsl(250, 90%, 19%), #b50de9)',height:'100vh' }}>
       <div className='row d-flex justify-content-center'>
-          <div className="col-md-4 rounded-2xl shadow-lg shadow-purple-500 opacity-85 mt-5" style={{minHeight: '500px'}}>
+          <div className="col-md-4 rounded-2xl shadow-lg mt-5" style={{minHeight: '500px'}}>
+            
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
               <ul className="dropdown-menu">
@@ -94,7 +113,9 @@ const Home = () => {
               <h3 className='text-light text-center'>{selectedCity}</h3>
               <p className='text-light text-center'>{weather.current.temp_c}°C</p>
               <p className='text-light text-center'>{weather.location.localtime}</p>
-              <img src={weather.current.condition.icon}  style={{height:'25%',width:'25%',marginLeft:'170px'}}/>
+              <p className='text-light text-center'>{weather.current.condition.text}</p>
+              <img src={weather.current.condition.icon}  style={{height:'25%',width:'25%', marginLeft:'165px'}}/>
+              <img src ={backgroundImage.current.condition.icon} />
 
             </div>
           )}
