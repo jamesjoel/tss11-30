@@ -4,10 +4,12 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import {useFormik} from 'formik'
 import axios from 'axios'
 import {API_URL} from '../../constants/API_URL'
+import BusinessSchema from '../../schemas/BusinessSchema'
 
 const Signup = () => {
     let navigate = useNavigate();
     let SignupFrm = useFormik({
+        validationSchema : BusinessSchema,
         initialValues : {
             name : "",
             business_name : "",
@@ -47,31 +49,80 @@ const Signup = () => {
                             <div className="my-2">
                                 <label>Name</label>
                                 <input name='name' onChange={SignupFrm.handleChange} type='text' className='form-control' />
+                                {
+                                    SignupFrm.errors.name && SignupFrm.touched.name
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.name}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             <div className="my-2">
                                 <label>Business Name</label>
                                 <input name='business_name' onChange={SignupFrm.handleChange} type='text' className='form-control' />
+                                {
+                                    SignupFrm.errors.business_name && SignupFrm.touched.business_name
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.business_name}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             <div className="my-2">
                                 <label>Username/Email</label>
                                 <input name='email' onChange={SignupFrm.handleChange} type='text' className='form-control' />
+                                {
+                                    SignupFrm.errors.email && SignupFrm.touched.email
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.email}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             <div className="my-2">
                                 <label>Password</label>
                                 <input name='password' onChange={SignupFrm.handleChange} type='password' className='form-control' />
+                                {
+                                    SignupFrm.errors.password && SignupFrm.touched.password
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.password}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             <div className="my-2">
                                 <label>Re-Password</label>
                                 <input  name='repassword' onChange={SignupFrm.handleChange} type='password' className='form-control' />
+                                {
+                                    SignupFrm.errors.repassword && SignupFrm.touched.repassword
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.repassword}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             <div className="my-2">
                                 <label>Contact</label>
                                 <input name='contact' onChange={SignupFrm.handleChange} type='text' className='form-control' />
+                                {
+                                    SignupFrm.errors.contact && SignupFrm.touched.contact
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.contact}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             
                             <div className="my-2">
                                 <label>Address</label>
                                 <textarea name='address' onChange={SignupFrm.handleChange} className='form-control' ></textarea>
+                                {
+                                    SignupFrm.errors.address && SignupFrm.touched.address
+                                    ?
+                                    <span className='text-danger'>{SignupFrm.errors.address}</span>
+                                    :
+                                    ''
+                                }
                             </div>
                             
                         </div>

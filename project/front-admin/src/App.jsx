@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
     <div className="wrapper">
-      <SideBar />
+      {/* <SideBar /> */}
       <AllRoutes />
     </div>
     </>

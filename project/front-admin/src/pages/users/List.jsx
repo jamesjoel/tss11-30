@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {API_URL} from '../../constants/API_URL'
+import { TopNav } from '../../components/TopNav';
 
 const List = () => {
 
@@ -19,6 +20,7 @@ const List = () => {
         <div className="main-header">
             <div className="main-header-logo">
             </div>
+            <TopNav />
         </div>
         <div className="container">
           <div className="page-inner">

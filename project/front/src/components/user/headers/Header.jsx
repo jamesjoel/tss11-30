@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import Nav from './Nav'
 
 const Header = () => {
+    
+
   return (
     <header className="header-area">
     <div className="container">

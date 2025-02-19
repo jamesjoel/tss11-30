@@ -8,15 +8,24 @@ import SignupFrmSchema from '../../schemas/SignupSchema'
 
 const Signup = () => {
     let navigate = useNavigate();
+    useEffect(()=>{
+        localStorage.removeItem("name")
+        localStorage.removeItem("age")
+    },[])
+    let [allState, setAllState] = useState([]);
+    /*
+        let allState = useState([])[0];
+        let setAllState = useState([])[1];
+    */
     let [allCity, setAllCity] = useState([]);
     useEffect(()=>{
         axios
-        .get(`${API_URL}/city`)
+        .get(`${API_URL}/city/state`)
         .then(response=>{
-            // console.log(response.data);
-            setAllCity(response.data);
+            setAllState(response.data);
         })
     },[])
+
 
     let SignupFrm = useFormik({
         validationSchema : SignupFrmSchema,
@@ -29,11 +38,10 @@ const Signup = () => {
             gender : "",
             state : "",
             city : "",
-            contact : ""
+            contact : "",
+            
         },
         onSubmit : (formData)=>{
-            
-            
             axios
             .post(`${API_URL}/user`, formData)
             .then(response=>{
@@ -44,6 +52,17 @@ const Signup = () => {
             
         }
     });
+
+    let getState = (e)=>{
+        let x = e.target.value;
+        // console.log(e.target.value);
+        axios
+        .get(`${API_URL}/city/getcity/${x}`)
+        .then(response=>{
+            console.log(response.data);
+            setAllCity(response.data);
+        })
+    }
 
 
   return (
@@ -116,13 +135,19 @@ const Signup = () => {
                                             ''
                                         }
                                     </div>
+                                    
+
+
+
+
                                     <div className="my-2">
                                         <label>State</label>
-                                        <select name='state' onChange={SignupFrm.handleChange} className={'form-control' + (SignupFrm.errors.state && SignupFrm.touched.state ? ' is-invalid' : '')} >
-                                            <option>Select</option>
-                                            <option>Madhya Pradesh</option>
-                                            <option>Rajasthan</option>
-                                            <option>Gujrat</option>
+                                        <select name='state' onChange={(e)=>{getState(e); SignupFrm.handleChange(e)}} className={'form-control' + (SignupFrm.errors.state && SignupFrm.touched.state ? ' is-invalid' : '')} >
+                                            <option value="">Select</option>
+                                            {
+                                                allState.map((item, index)=><option key={index} value={item}>{item}</option>)
+                                            }
+                                            
                                         </select>
                                         {
                                             SignupFrm.errors.state && SignupFrm.touched.state
@@ -133,11 +158,12 @@ const Signup = () => {
                                         }
                                     </div>
                                     <div className="my-2">
+                                        
                                     <label>City</label>
                                         <select name='city' onChange={SignupFrm.handleChange} className={'form-control' + (SignupFrm.errors.city && SignupFrm.touched.city ? ' is-invalid' : '')} >
-                                            <option>Select</option>
+                                            <option value="">Select</option>
                                             {
-                                                allCity.map(item=><option>{item.name}</option>)
+                                                allCity.map(item=><option key={item._id} value={item.name}>{item.name}</option>)
                                             }
                                         </select>
                                         {
@@ -161,9 +187,9 @@ const Signup = () => {
                                     </div>
                                     <div className="my-2">
                                         <label>Gender</label><br />
-                                        <input name='gender'  onChange={SignupFrm.handleChange} type='radio' />&nbsp;&nbsp;&nbsp;Male
+                                        <input name='gender' value={'male'} onChange={SignupFrm.handleChange} type='radio' />&nbsp;&nbsp;&nbsp;Male
                                         <br />
-                                        <input name='gender'  onChange={SignupFrm.handleChange} type='radio' />&nbsp;&nbsp;&nbsp;Female
+                                        <input name='gender' value={'female'}  onChange={SignupFrm.handleChange} type='radio' />&nbsp;&nbsp;&nbsp;Female
                                         <br />
                                         {
                                             SignupFrm.errors.gender && SignupFrm.touched.gender

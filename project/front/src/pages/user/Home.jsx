@@ -3,15 +3,16 @@ import Header from '../../components/user/headers/Header'
 import HeroSection from '../../components/user/HeroSection'
 import axios from 'axios';
 import {API_URL} from '../../constants/API_URL'
+import HotelInfo from '../../components/user/HotelInfo';
 
 const Home = () => {
 
-    let [allBus, setAllBus] = useState([]);
+    let [allHotels, setAllHotels] = useState([]);
     useEffect(()=>{
         axios
-        .get(`${API_URL}/business`)
+        .get(`${API_URL}/hotels`)
         .then(response=>{
-            setAllBus(response.data);
+            setAllHotels(response.data);
         })
     },[])
 
@@ -38,22 +39,9 @@ const Home = () => {
 
                 
                 {
-                    allBus.map(item=>{
+                    allHotels.map(item=>{
                         return(
-                            <div className="col-md-4 col-sm-6">
-                                <div className="single-food mt-5 mt-sm-0">
-                                    <div className="food-img">
-                                        <img src="assets/images/food2.jpg" className="img-fluid" alt="" />
-                                    </div>
-                                    <div className="food-content">
-                                        <div className="d-flex justify-content-between">
-                                            <h5>{item.business_name}</h5>
-                                            <span className="style-change badge bg-danger text-light">{item.rating}</span>
-                                        </div>
-                                        <p className="pt-3">{item.address}</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <HotelInfo hotel={item} />
                         )
                     })
                 }
