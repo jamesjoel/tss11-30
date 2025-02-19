@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^4.21.1",
     "pdfkit": "^0.15.1",
     "string-random": "^0.1.3"
   }
