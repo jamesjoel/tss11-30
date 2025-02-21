@@ -1,12 +1,14 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import Allroutes from './allroutes'
+import Home2 from './Home2'
+import Home from './Home'
+
+
 
 const App = () => {
   return (
     <>
-    <Allroutes/>
-    
+    <Home2/>
+
     </>
   )
 }

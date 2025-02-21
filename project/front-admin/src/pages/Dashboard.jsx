@@ -1,4 +1,5 @@
 import React from 'react'
+import { TopNav } from '../components/TopNav'
 
 const Dashboard = () => {
   return (
@@ -30,44 +31,7 @@ const Dashboard = () => {
             </div>
            
           </div>
-          
-          <nav
-            className="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
-          >
-            <div className="container-fluid">
-             
-
-              <ul className="navbar-nav topbar-nav ms-md-auto align-items-center">
-                
-                
-               
-                
-
-                <li className="nav-item topbar-user dropdown hidden-caret">
-                  <a
-                    className="dropdown-toggle profile-pic"
-                    data-bs-toggle="dropdown"
-                    href="#"
-                    aria-expanded="false"
-                  >
-                    <div className="avatar-sm">
-                      <img
-                        src="assets/img/profile.jpg"
-                        alt="..."
-                        className="avatar-img rounded-circle"
-                      />
-                    </div>
-                    <span className="profile-username">
-                      <span className="op-7">Hi,</span>
-                      <span className="fw-bold">Hizrian</span>
-                    </span>
-                  </a>
-                  
-                </li>
-              </ul>
-            </div>
-          </nav>
-          
+          <TopNav />
         </div>
 
         <div className="container">

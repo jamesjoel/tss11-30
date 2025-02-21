@@ -1,13 +1,10 @@
 require("../config/conn");
-
-let mongoose = require("mongoose");
-
-let CitySchema = mongoose.Schema({
+const mongoose = require("mongoose");
+const CitySchema = mongoose.Schema({
     id : String,
     name : String,
     state : String
-}, {collection : "city"});
+}, {collection:"city"});
 
-let City = mongoose.model("city", CitySchema);
-
+const City = mongoose.model("city", CitySchema);
 module.exports = City;

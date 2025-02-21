@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.10.0",
+    "mongoose-reverse-populate-v2": "^1.2.4"
+  }
+}

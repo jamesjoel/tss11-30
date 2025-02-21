@@ -7,6 +7,11 @@ import Contact from './pages/Contact'
 import Home2 from './pages/Home2'
 import Events1 from './pages/Events1'
 import Event2 from './pages/Event2'
+import Event3 from './pages/Event3'
+import Event4 from './pages/Event4'
+import Event5 from './pages/Event5'
+import Event6 from './pages/Event6'
+import Event7 from './pages/Event7'
 const App = () => {
   return (
     <>
@@ -32,6 +37,21 @@ const App = () => {
             <li className="nav-item">
               <NavLink to="/event2" className="nav-link text-light">Event2</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/event3" className="nav-link text-light">Event3</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/event4" className="nav-link text-light">Event4</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/event5" className="nav-link text-light">Event5</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/event6" className="nav-link text-light">Event6</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/event7" className="nav-link text-light">Event7</NavLink>
+            </li>
           </ul>
         </div>
       </div>
@@ -45,6 +65,12 @@ const App = () => {
         <Route path='contact' element={<Contact />} />
         <Route path='events1' element={<Events1 />} />
         <Route path='event2' element={<Event2 />} />
+        <Route path='event3' element={<Event3 />} />
+        <Route path='event4' element={<Event4 />} />
+        <Route path='event5' element={<Event5 />} />
+        <Route path='event6' element={<Event6 />} />
+        <Route path='event7' element={<Event7 />} />
+        
       </Routes>
       </div>
     </>

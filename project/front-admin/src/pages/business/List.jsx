@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { API_URL } from '../../constants/API_URL'
+import { TopNav } from '../../components/TopNav';
 
 
 const List = () => {
+
     let [allBus, setAllBus] = useState([]);
+
+    useEffect(()=>{
+      console.log(localStorage.getItem("name"))
+      console.log(localStorage.getItem("age"))
+  },[])
     useEffect(()=>{
         axios.get(`${API_URL}/business`)
         .then(response=>{
@@ -18,6 +25,7 @@ const List = () => {
         <div className="main-header">
             <div className="main-header-logo">
             </div>
+            <TopNav />
         </div>
         <div className="container">
           <div className="page-inner">

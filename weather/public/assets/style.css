@@ -1,26 +1,63 @@
-.gradient_background {
-    background: linear-gradient(120deg, hsl(250, 90%, 19%), #b50de9);
-    height: 100vh;
-    /* width: 1200cqmax; */
-  }
+.watch {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
+.watch-face {
+  width: 80%;
+  height: 80%;
+  position: relative;
+}
 
-.gradient_background_div {
-    background: linear-gradient(0deg, rgba(40, 2, 192, 0.763), hsl(300, 2%, 11%));
-    height: 600px;
-    box-shadow: 9px 10px 2px rgba(42, 41, 41, 0.126);
-    /* opacity: 0.5; */
+.center-circle {
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-    /* width: 1200cqmax; */
-  }
+.hour-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 40%;
+  background-color: #333;
+  transform-origin: center;
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
 
+.minute-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 50%;
+  background-color: #666;
+  transform-origin: center;
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
 
-  .hero-image {
-    background-image: url(./images/cloudy.avif);
-    /* background-color: #10106e; */
-    height: 600px;
-    width: 80%;
-    background-repeat: no-repeat;
-    /* opacity: 0.5; */
-
-  }
+.second-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 60%;
+  background-color: #f00;
+  transform-origin: center;
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
