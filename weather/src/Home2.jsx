@@ -12,47 +12,32 @@ const Home2 = () => {
         const { latitude, longitude } = position.coords;
         console.log(latitude, longitude)
 
-        axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=76834d5035934b569fdd2438e48902a9`)
+        axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=4c14f9f966c0424fa6f8c75b884836b2`)
         .then(response=>{
-          // console.log(response.data.features[0].properties.city)
-          setCity(response.data.features[0].properties.city)
+          console.log(response.data.features[0].properties.city);
+           setCity(response.data.features[0].properties.city)
           axios.get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${setCity}&aqi=no`)
-          .then(response=>{
-            console.log(response.data)
+          .then(response => {
+            console.log(response.data);
           })
         })
+        
       },
       (error) => {
         console.error('Error getting user location:', error);
       }
     );
   },[])
-
-  const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error('Error getting user location:', error);
-        }
-      );
-    }
-    else {
-      console.error('Geolocation is not supported by this browser.');
-    }
-  };
-
-   
+ 
 
   return (
     <>
       <div>
         <h1>{city}</h1>
       <h1>Geolocation App</h1>
-      <button onClick={getUserLocation}>Get User Location</button>
+      {/* create a button that is mapped to the function which retrieves the users location */}
+      {/* <button onClick={getUserLocation}>Get User Location</button> */}
+      {/* if the user location variable has a value, print the users location */}
       {userLocation && (
         <div>
           <h2>User Location</h2>
@@ -67,4 +52,4 @@ const Home2 = () => {
 }
 
 export default Home2
-//https://api.geoapify.com/v1/geocode/reverse?lat=51.21709661403662&lon=6.7782883744862374&apiKey=76834d5035934b569fdd2438e48902a9
+//https://api.geoapify.com/v1/geocode/reverse?lat=51.21709661403662&lon=6.7782883744862374&apiKey=4c14f9f966c0424fa6f8c75b884836b2

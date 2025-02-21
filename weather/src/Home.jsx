@@ -4,7 +4,19 @@ import AnalogClock from 'analog-clock-react';
 import axios from 'axios';
 import './Home2.css'
 
+
+
+
 const Home = () => {
+ 
+  const [allState, setAllState] = useState([]);
+  const [allCity, setAllCity] = useState([]);
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [weather, setWeather] = useState({});
+  const [bgImg, setBgImg] = useState("");
+  const [userLocation, setUserLocation] = useState(null);
+  const [city, setCity] =useState("")
 
   let options = {
     width: "80px",
@@ -20,17 +32,8 @@ const Home = () => {
     }
 };
 
-  const [allState, setAllState] = useState([]);
-  const [allCity, setAllCity] = useState([]);
-  const [selectedState, setSelectedState] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
-  const [weather, setWeather] = useState({});
-  let   [bgImg, setBgImg] = useState("")
-
   
 
-
- 
   useEffect(() => {
     axios
       .get("https://tss11-30-project.onrender.com/api/v1/city/state")
@@ -56,7 +59,7 @@ const Home = () => {
       });
   };
 
-  const handleCityChange = (e) => {
+    const handleCityChange = (e) => {
     const selectedCity = e.target.value;
     setSelectedCity(selectedCity);
 
@@ -64,8 +67,25 @@ const Home = () => {
       .get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${selectedCity}&aqi=no`)
       .then(response => {
         setWeather(response.data);
-        if(response.data.current.condition.text=='Sunny'){
-          setBgImg("/assets/images/bg3.jpg")
+        // console.log(response.data.current.condition.text)
+        if(response.data.current.condition.text=="Sunny"){
+          setBgImg("/assets/images/bg10.jpg");
+        }else if(response.data.current.condition.text=="Cloudy"){
+          setBgImg("/assets/images/bg3.jpg");
+        }else if(response.data.current.condition.text=="Partly Cloudy"){
+          setBgImg("/assets/images/bg3.jpg");
+        }else if(response.data.current.condition.text=="Partly cloudy"){
+          setBgImg("/assets/images/bg3.jpg");
+        }else if(response.data.current.condition.text=="Mist"){
+          setBgImg("/assets/images/bg6.jpg");
+        }else if(response.data.current.condition.text=="Rain"){
+          setBgImg("/assets/images/bg7.jpg");
+        }else if(response.data.current.condition.text=="Clear"){
+          setBgImg("/assets/images/bg9.jpg");
+
+        
+        }else{
+          setBgImg("");
         }
       })
       .catch(error => {
@@ -73,23 +93,49 @@ const Home = () => {
       });
   };
 
+
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        console.log(latitude, longitude)
+
+        axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=4c14f9f966c0424fa6f8c75b884836b2`)
+        .then(response=>{
+          console.log(response.data.features[0].properties.city);
+           let city = (response.data.features[0].properties.city)
+          //  setCity(response.data.features[0].properties.city)
+          axios.get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${city}&aqi=no`)
+          .then(response => {
+            console.log(response.data);
+            setWeather(response.data);
+          })
+        })
+        
+      },
+      (error) => {
+        console.error('Error getting user location:', error);
+      }
+    );
+  },[])
+
   return (
     <>
       <div className='main'>
           <div className='weather-box' style={{backgroundImage :`url('${bgImg}')`}}>
-             <div className='row'>
-              <div className='col-md-8'>
-               <h3>Live Weather App</h3>
+            <div className="row">
+              <div className="col-8 ">
+              <h3>Live Weather App</h3>
                <p>Search Your City</p>
-
+              
               </div>
-              <div className='col-md-4'>
+              <div className="col-4">
               <div>
-                  <AnalogClock {...options} />
-                </div>
-
+                <AnalogClock {...options} />
               </div>
-             </div>
+              </div>
+            </div>
+                    
                     <div className="form-group">
                         <label>State</label>
                         <select className='form-control' value={selectedState} onChange={handleStateChange}>
@@ -114,14 +160,32 @@ const Home = () => {
                       
                       {weather.current && (
                       <div className='mt-2'>
-                        <h3 className='text-light text-center'>{selectedCity}</h3>
+                        {
+                          
+                          selectedCity.length>0 
+                          ?
+                          <h3 className='text-light text-center'>{selectedCity}</h3>
+                          :
+                          <h3 className='text-light text-center'>{city}</h3>
+                        }
+
                         <p className='text-light text-center'>{weather.current.temp_c}°C</p>
                         <p className='text-light text-center'>{weather.location.localtime}</p>
-                        <p className='text-light text-center'>{weather.current.condition.text}</p>
                         <img src={weather.current.condition.icon}  style={{height:'30%',width:'30%', marginLeft:'35%'}}/>
+                        <p className='text-light text-center'>{weather.current.condition.text}</p>
+                      
                       </div>
                       )}
           </div>
+          <div>
+      {userLocation && (
+        <div>
+          {/* <h1>{city}</h1> */}
+          <p>Latitude: {userLocation.latitude}</p>
+          <p>Longitude: {userLocation.longitude}</p>
+        </div>
+      )}
+    </div>
      </div>
     </>
   );
