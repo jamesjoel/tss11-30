@@ -65,47 +65,55 @@ const Home = () => {
       .get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${selectedCity}&aqi=no`)
       .then(response => {
         setWeather(response.data);
+        changeBg(response.data.current.condition.text);
         // console.log(response.data.current.condition.text)
-        if(response.data.current.condition.text=="Sunny"){
-          setBgImg("/assets/images/bg10.jpg");
-        }else if(response.data.current.condition.text=="Cloudy"){
-          setBgImg("/assets/images/bg3.jpg");
-        }else if(response.data.current.condition.text=="Partly Cloudy"){
-          setBgImg("/assets/images/bg3.jpg");
-        }else if(response.data.current.condition.text=="Partly cloudy"){
-          setBgImg("/assets/images/bg3.jpg");
-        }else if(response.data.current.condition.text=="Mist"){
-          setBgImg("/assets/images/bg6.jpg");
-        }else if(response.data.current.condition.text=="Rain"){
-          setBgImg("/assets/images/bg7.jpg");
-        }else if(response.data.current.condition.text=="Clear"){
-          setBgImg("/assets/images/bg9.jpg");
-
         
-        }else{
-          setBgImg("");
-        }
       })
       .catch(error => {
         console.error(error);
       });
   };
 
+  let changeBg = (data) =>{
+    if(data=="Sunny"){
+      setBgImg("/assets/images/bg10.jpg");
+    }else if(data=="Cloudy"){
+      setBgImg("/assets/images/bg3.jpg");
+    }else if(data=="Partly Cloudy"){
+      setBgImg("/assets/images/bg3.jpg");
+    }else if(data=="Partly cloudy"){
+      setBgImg("/assets/images/bg3.jpg");
+    }else if(data=="Mist"){
+      setBgImg("/assets/images/bg6.jpg");
+    }else if(data=="Rain"){
+      setBgImg("/assets/images/bg7.jpg");
+    }else if(data=="Clear"){
+      setBgImg("/assets/images/bg9.jpg");
+
+    
+    }else{
+      setBgImg("");
+    }
+  }
+
 
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        console.log(latitude, longitude)
+        // console.log(latitude, longitude)
 
         axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=4c14f9f966c0424fa6f8c75b884836b2`)
         .then(response=>{
           console.log(response.data.features[0].properties.city);
            setCity(response.data.features[0].properties.city)
-          axios.get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${setCity}&aqi=no`)
+           let city = response.data.features[0].properties.city;
+          axios.get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${city}&aqi=no`)
           .then(response => {
             // console.log(response.data);
             setWeather(response.data);
+            setUserLocation(response.data)
+            changeBg(response.data.current.condition.text)
           })
         })
         
@@ -134,7 +142,7 @@ const Home = () => {
             </div>
                     
                     <div className="form-group">
-                        <label>State</label>
+                        <label className='text-light'>State</label>
                         <select className='form-control' value={selectedState} onChange={handleStateChange}>
                         <option></option>
                           {allState.map(item => (
@@ -145,7 +153,7 @@ const Home = () => {
                       
                       {allCity.length > 0 && (
                       <div className="form-group">
-                        <label>City</label>
+                        <label className='text-light'>City</label>
                       <select className='form-control' value={selectedCity} onChange={handleCityChange}>
                         <option></option>
                         {allCity.map((item, index) => (
@@ -157,9 +165,21 @@ const Home = () => {
                       
                       {weather.current && (
                       <div className='mt-2'>
-                        <h3 className='text-light text-center'>{selectedCity}</h3>
-                        <p className='text-light text-center'>{weather.current.temp_c}°C</p>
+                        {
+                          
+                          selectedCity.length>0
+                          ?
+                          <>
+                          <h3 className='text-light text-center'>{selectedCity}</h3>
+                          </>
+                          :
+                          
+                          <h3 className='text-light text-center'>{city}</h3>
+                          
+                        }
                         <p className='text-light text-center'>{weather.location.localtime}</p>
+
+                        <p className='text-light text-center'>{weather.current.temp_c}°C</p>
                         <img src={weather.current.condition.icon}  style={{height:'30%',width:'30%', marginLeft:'35%'}}/>
                         <p className='text-light text-center'>{weather.current.condition.text}</p>
                       
@@ -169,7 +189,7 @@ const Home = () => {
           <div>
       {userLocation && (
         <div>
-          <h1>{city}</h1>
+
           <p>Latitude: {userLocation.latitude}</p>
           <p>Longitude: {userLocation.longitude}</p>
         </div>
