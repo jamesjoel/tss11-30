@@ -9,22 +9,25 @@ import {
 import { BrowserRouter } from 'react-router-dom';
 import { Routes,Route } from 'react-router-dom';
 import Home from './url'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 
 
 const API_KEY = "AIzaSyCk0htx320UYoMkyh-UiGkUY2c4jrNvsZg";
 
 const App = () => (
+  <div style={{height : "700px", width : "1000px"}}>
+
   <APIProvider apiKey={API_KEY}>
     <Map
-      defaultCenter={{ lat: 28.679079, lng: 77.069710 }}
-      defaultZoom={9}
+      // defaultCenter={{ lat: 28.679079, lng: 77.069710 }}
+      defaultZoom={20}
       gestureHandling={'greedy'}
       fullscreenControl={false}>
       <Directions />
     </Map>
   </APIProvider>
+        </div>
 );
 
 
@@ -42,13 +45,21 @@ let Directions =(()=> {
   const leg = selected?.legs[0];
   const [position, setPosition] = useState<google.maps.LatLng | null>(null);
   
+  const [desti, setDesti] = useState<any>({});
+
+  let [searchParam] = useSearchParams();
+  useEffect(()=>{
+    setDesti({
+      lat : searchParam.get("latitude"),
+      long : searchParam.get("longitude")
+    })
+  },[])
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
         setPosition(new google.maps.LatLng(latitude, longitude));
-        console.log({ lat: latitude, lng: longitude });
       });
     }
   }, []);
@@ -94,14 +105,15 @@ let Directions =(()=> {
     directionsService
       .route({
         origin: position, // Pass geolocation as origin
-        destination: 'kota',
+        destination: new google.maps.LatLng(desti.lat, desti.long),
+        
         travelMode: google.maps.TravelMode.DRIVING,
         provideRouteAlternatives: true
       })
       .then(response => {
         directionsRenderer.setDirections(response);
         setRoutes(response.routes);
-      })
+      }) 
       .catch(error => {
         console.error('Directions request failed due to ' + error);
       });
@@ -120,7 +132,7 @@ let Directions =(()=> {
   return (
     <div className="directions">
       <h2>{selected.summary}</h2>
-      <p>
+      {/* <p>
         {leg.start_address.split(',')[0]} to {leg.end_address.split(',')[0]}
       </p>
       <p>Distance: {leg.distance?.text}</p>
@@ -135,7 +147,7 @@ let Directions =(()=> {
             </button>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
@@ -147,14 +159,14 @@ export function renderToDom(container: HTMLElement) {
 
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
-      
-      <Routes>
-      <Route path= '' element = {<Home/>}/>
-      <Route path= '/findme' element = {<App/>}/>
-    </Routes>
-   
-      </BrowserRouter>
+        <BrowserRouter>
+        
+        <Routes>
+          <Route path= '' element = {<Home/>}/>
+          <Route path= '/findme' element = {<App/>}/>
+        </Routes>
+    
+        </BrowserRouter>
     </React.StrictMode>
   );
 }
