@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Home2.css'
+// import './Home2.css'
+import '../public/assets/style.css'
+
 import AnalogClock from 'analog-clock-react';
 
 
@@ -196,6 +198,11 @@ const Home = () => {
       )}
     </div>
      </div>
+
+
+
+
+     
     </>
   );
 };

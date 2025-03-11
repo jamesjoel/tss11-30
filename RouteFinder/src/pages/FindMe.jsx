@@ -21,7 +21,7 @@ const FindMe = ()=> {
       navigator.geolocation.getCurrentPosition((position) => {
 
         setPosition({ lat: position.coords.latitude, lng: position.coords.longitude });
-        console.log(setPosition);
+        console.log({ lat: position.coords.latitude, lng: position.coords.longitude });
       });
 
     }
@@ -42,7 +42,8 @@ const FindMe = ()=> {
 
     <LoadScript 
 
-      googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY" 
+      googleMapsApiKey="AIzaSyCk0htx320UYoMkyh-UiGkUY2c4jrNvsZg"
+      
 
       libraries={['places']}
 

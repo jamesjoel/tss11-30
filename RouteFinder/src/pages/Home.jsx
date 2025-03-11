@@ -25,8 +25,3 @@ export default Home
 
 
 
-// function FullURLDisplay() {
-//   const fullURL = window.location.href;
-//   console.log(`The full URL is: ${fullURL}`);
-//   return <div>Full URL: {fullURL}</div>;
-// }

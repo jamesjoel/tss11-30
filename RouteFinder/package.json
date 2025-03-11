@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@googlemaps/routing": "^1.4.0",
     "@react-google-maps/api": "^2.20.6",
+    "@vis.gl/react-google-maps": "^1.5.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0"
