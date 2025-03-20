@@ -1,14 +1,16 @@
-import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
+import MyBtn from "../components/MyBtn";
 let Help = ()=>{
-    let navigate = useNavigate()
-    let demo = ()=>{    
-       localStorage.removeItem("token")
-       navigate("/") 
+    let [name, setName] = useState("");
+    let demo = ()=>{
+        console.log("********");
     }
+    
+    
     return(
         <>
-        <h1>Help Page</h1>
-        <button onClick={demo}>Ok</button>
+            <MyBtn data={setName} onClick={demo} className="btn btn-danger">James</MyBtn>
+            <h1>{name}</h1>
         </>
     )
 }

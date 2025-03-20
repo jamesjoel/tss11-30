@@ -8,10 +8,12 @@ import UserIndex from '../pages/user/Index';
 import UserSetting from '../pages/user/Setting';
 import UserMore from '../pages/user/More';
 import UserModule from '../module/UserModule';
+import FindMe from '../pages/FindMe';
 let AllRoutes = ()=>{
     return(
         <Routes>
             <Route path="" element={<Home />} />
+            <Route path="findme" element={<FindMe />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="help" element={<Help />} />

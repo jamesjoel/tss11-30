@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Home2.css'
 const Home2 = () => {
     let [bgImg, setBgImg] = useState("")
+    
   return (
     <div className='main'>
         <div className='weather-box' style={{backgroundImage :`url('${bgImg}')`}}>
