@@ -1,13 +1,26 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
 const url = () => {
 
+  const [position, setPosition] = useState({})
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setPosition({
+          latitude: latitude,
+          longitude: longitude
+        });
+      });
+    }
+  }, []);
     let [pathname, setPathname] = useState("")
 
     let generateUrl = ()=>{
-     let getUrl = window.location.href ; 
+     let getUrl = window.location.origin ; 
       console.log(`The full URL is: ${getUrl}`);
-      setPathname(`${getUrl}`);
+      setPathname(`${getUrl}/findme?latitude=${position.latitude}&longitude=${position.longitude}`);
     }
 
   return (
@@ -20,6 +33,7 @@ const url = () => {
   
   )
 }
- 
+ // lat 22.700439
+ // long 75.863411
 
 export default url

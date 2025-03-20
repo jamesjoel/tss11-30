@@ -1,81 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import React, {useEffect, useState} from 'react';
+import {createRoot} from 'react-dom/client';
+
 import {
   APIProvider,
   Map,
   useMapsLibrary,
   useMap
 } from '@vis.gl/react-google-maps';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes,Route } from 'react-router-dom';
-import Home from './url'
-import { useLocation, useSearchParams } from 'react-router-dom';
 
+// const API_KEY =
+//   globalThis.GOOGLE_MAPS_API_KEY ?? (process.env.GOOGLE_MAPS_API_KEY as string);
 
-
-const API_KEY = "AIzaSyCk0htx320UYoMkyh-UiGkUY2c4jrNvsZg";
-
-const App = () => (
-  <div style={{height : "700px", width : "1000px"}}>
-
-  <APIProvider apiKey={API_KEY}>
-    <Map
-      // defaultCenter={{ lat: 28.679079, lng: 77.069710 }}
-      defaultZoom={20}
-      gestureHandling={'greedy'}
-      fullscreenControl={false}>
-      <Directions />
-    </Map>
-  </APIProvider>
-        </div>
-);
-
-
-
-let Directions =(()=> {
+function Directions() {
   const map = useMap();
   const routesLibrary = useMapsLibrary('routes');
   const [directionsService, setDirectionsService] =
-    useState<google.maps.DirectionsService>();
+useState<google.maps.DirectionsService>();
   const [directionsRenderer, setDirectionsRenderer] =
     useState<google.maps.DirectionsRenderer>();
   const [routes, setRoutes] = useState<google.maps.DirectionsRoute[]>([]);
   const [routeIndex, setRouteIndex] = useState(0);
   const selected = routes[routeIndex];
   const leg = selected?.legs[0];
-  const [position, setPosition] = useState<google.maps.LatLng | null>(null);
-  
-  const [desti, setDesti] = useState<any>({});
-
-  let [searchParam] = useSearchParams();
-  useEffect(()=>{
-    setDesti({
-      lat : searchParam.get("latitude"),
-      long : searchParam.get("longitude")
-    })
-  },[])
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        setPosition(new google.maps.LatLng(latitude, longitude));
-      });
-    }
-  }, []);
-
-  // useeffect{
-  // fetchlocation (){
-
-  // }
-  // settimeout(fetchloactionn, 5000)
-  // }
- 
 
   // Initialize directions service and renderer
   useEffect(() => {
     if (!routesLibrary || !map) return;
-
     setDirectionsService(new routesLibrary.DirectionsService());
     setDirectionsRenderer(
       new routesLibrary.DirectionsRenderer({
@@ -105,26 +55,22 @@ let Directions =(()=> {
 
   // Use directions service
   useEffect(() => {
-    if (!directionsService || !directionsRenderer || !position) return;
+    if (!directionsService || !directionsRenderer) return;
 
     directionsService
       .route({
-        origin: position, // Pass geolocation as origin
-        destination: new google.maps.LatLng(desti.lat, desti.long),
-        
+        origin: 'indore',
+        destination: 'bhopal',
         travelMode: google.maps.TravelMode.DRIVING,
         provideRouteAlternatives: true
       })
       .then(response => {
         directionsRenderer.setDirections(response);
         setRoutes(response.routes);
-      }) 
-      .catch(error => {
-        console.error('Directions request failed due to ' + error);
       });
 
     return () => directionsRenderer.setMap(null);
-  }, [directionsService, directionsRenderer, position]);
+  }, [directionsService, directionsRenderer]);
 
   // Update direction route
   useEffect(() => {
@@ -137,7 +83,9 @@ let Directions =(()=> {
   return (
     <div className="directions">
       <h2>{selected.summary}</h2>
-      {/* <p>
+      <br/>
+      <br/>
+      <p>
         {leg.start_address.split(',')[0]} to {leg.end_address.split(',')[0]}
       </p>
       <p>Distance: {leg.distance?.text}</p>
@@ -152,26 +100,32 @@ let Directions =(()=> {
             </button>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 }
-)
-export default App;
+const App = () => (
+  <APIProvider apiKey={"AIzaSyCk0htx320UYoMkyh-UiGkUY2c4jrNvsZg"}>
+    <Map
+      defaultCenter={{lat: 28.644800, lng: 77.216721}}
+      defaultZoom={9}
+      gestureHandling={'greedy'}
+      fullscreenControl={false}>
+      {/* <Directions /> */}
+    </Map>
+  </APIProvider>
+);
+
+
+
+export default {App, Directions};
 
 export function renderToDom(container: HTMLElement) {
   const root = createRoot(container);
 
   root.render(
     <React.StrictMode>
-        <BrowserRouter>
-        
-        <Routes>
-          <Route path= '' element = {<Home/>}/>
-          <Route path= '/findme' element = {<App/>}/>
-        </Routes>
-    
-        </BrowserRouter>
+      <App />
     </React.StrictMode>
   );
 }

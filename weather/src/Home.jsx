@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import AnalogClock from 'analog-clock-react';
+
 import axios from 'axios';
+<<<<<<< HEAD
 // import './Home2.css'
 import '../public/assets/style.css'
 
 import AnalogClock from 'analog-clock-react';
+=======
+import './Home2.css'
+>>>>>>> 647017922b17a9d0da7f9f96de4406bf0f2d85d7
 
 
 
@@ -33,6 +39,7 @@ const Home = () => {
     }
 };
 
+  
 
   useEffect(() => {
     axios
@@ -112,7 +119,7 @@ const Home = () => {
            let city = response.data.features[0].properties.city;
           axios.get(`http://api.weatherapi.com/v1/current.json?key=8b26d241c5564b52a41183325251302&q=${city}&aqi=no`)
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
             setWeather(response.data);
             setUserLocation(response.data)
             changeBg(response.data.current.condition.text)
@@ -131,12 +138,12 @@ const Home = () => {
       <div className='main'>
           <div className='weather-box' style={{backgroundImage :`url('${bgImg}')`}}>
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-8 ">
               <h3>Live Weather App</h3>
                <p>Search Your City</p>
               
               </div>
-              <div className="col-md-4">
+              <div className="col-4">
               <div>
                 <AnalogClock {...options} />
               </div>
@@ -188,15 +195,14 @@ const Home = () => {
                       </div>
                       )}
           </div>
-          <div>
+          {/* <div>
       {userLocation && (
         <div>
-
           <p>Latitude: {userLocation.latitude}</p>
           <p>Longitude: {userLocation.longitude}</p>
         </div>
       )}
-    </div>
+    </div> */}
      </div>
 
 

@@ -8,7 +8,7 @@
     "vite": "^6.0.11"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "start-local": "vite --config ../vite.config.local.js",
     "build": "vite build"
   }
