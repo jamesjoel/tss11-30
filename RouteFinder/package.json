@@ -1,0 +1,37 @@
+{
+  "name": "--y",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@googlemaps/routing": "^1.4.0",
+    "@react-google-maps/api": "^2.20.6",
+    "@vis.gl/react-google-maps": "^1.5.1",
+<<<<<<< HEAD
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+=======
+    "axios": "^1.8.1",
+>>>>>>> 647017922b17a9d0da7f9f96de4406bf0f2d85d7
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "vite": "^6.2.0"
+  }
+}
