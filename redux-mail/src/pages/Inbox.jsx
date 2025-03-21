@@ -7,13 +7,13 @@ const Inbox = () => {
   let allMail = useSelector(state=>state.MailReducer);
 
   return (
-    <div class="col-md-8 inbox-list">
-      <div class="email-item">
+    <div class="col-md-10 inbox-list">
+      
         {
           allMail.map(item=> item.mail_status==1 || item.mail_status ==2 ? <Mail key={item.id} data={item}  /> : '')
         }
         
-      </div>
+      
       
     </div>
   )

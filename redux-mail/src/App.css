@@ -18,15 +18,16 @@ body {
 }
 .email-item {
   padding: 12px;
-  border-bottom: 1px solid #dee2e6;
+  /* border-bottom: 1px solid #dee2e6; */
   cursor: pointer;
   transition: background-color 0.2s;
 }
 .email-item:hover {
-  background-color: #f8f9fa;
+  background-color: #acaeb0;
 }
 .unread {
   font-weight: bold;
+  
 }
 .email-preview {
   padding: 20px;
@@ -39,4 +40,8 @@ body {
 .email-time {
   font-size: 0.85rem;
   color: #6c757d;
+}
+
+.viewmail{
+  margin: 50px 10px;
 }
