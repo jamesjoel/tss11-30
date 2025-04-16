@@ -1,0 +1,28 @@
+{
+  "student": [
+    {
+      "id": "fcd8",
+      "name": "john",
+      "fee": "10000",
+      "city": "Mumbai"
+    },
+    {
+      "id": "1cd3",
+      "name": "vijay",
+      "fee": "1000",
+      "city": "Mumbai"
+    },
+    {
+      "id": "a216",
+      "name": "mita",
+      "fee": "10000",
+      "city": "Indore"
+    },
+    {
+      "id": "7455",
+      "name": "gggsdfgdf",
+      "fee": "33",
+      "city": "Pune"
+    }
+  ]
+}

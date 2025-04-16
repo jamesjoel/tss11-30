@@ -10,7 +10,7 @@ let allMail =
         "timestamp": "2025-03-12T10:30:00Z",
         "is_read": false,
         "labels": ["Work", "Important"],
-        "mail_status" : 1
+        "mail_status" : 2
       },
       {
         "id": "2",
@@ -22,7 +22,7 @@ let allMail =
         "timestamp": "2025-03-12T09:15:00Z",
         "is_read": true,
         "labels": ["Work", "Updates"],
-        "mail_status" : 3
+        "mail_status" : 2
       },
       {
         "id": "3",
@@ -34,7 +34,7 @@ let allMail =
         "timestamp": "2025-03-11T14:30:00Z",
         "is_read": false,
         "labels": ["Team", "Updates"],
-        "mail_status" : 4
+        "mail_status" : 2
       },
       {
         "id": "4",
